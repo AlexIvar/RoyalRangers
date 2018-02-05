@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="jumbotron" id="banner-img">
+    <h1>Skrá nýjan viðburð</h1>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-5 col-md-6">
+        <div class="card" id="cardStyle">
+          <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4" class="col-form-label">Titil á viðburði</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4" class="col-form-label">Hvenær á viðburðurinn sér stað?</label>
+                  <input type="password" class="form-control" id="inputPassword4" placeholder="">
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="inputPassword4" class="col-form-label">Segðu frá viðburðinum</label>
+                  <textarea class="form-control animated" placeholder=""></textarea>
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="inputPassword4" class="col-form-label">Aðrar upplýsingar</label>
+                  <textarea class="form-control animated" placeholder=""></textarea>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+          <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+            <div class="card" id="imageContainer">
+              <img [ngClass]="{'img': step=='step1'}" src="https://image.ibb.co/igq6gv/empty.png" alt="Card image cap" id="cardImage" #photo>
+              <input type="file" name="fileUp" class="hidden" accept="image/*" (change)="displayPhoto($event)" *ngIf="input">
+            </div>
+            <div id="toolbox">
+            <button type="button" class="btn btn-primary" (click)="reset()"><span class="fa fa-remove"></span></button>
+            <button type="button" class="btn btn-primary"><span class="fa fa-check"></span></button>
+          </div>
+          </div>
+</div>

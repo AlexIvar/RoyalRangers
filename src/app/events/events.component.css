@@ -1,0 +1,32 @@
+#cardImage {
+  height: 100%;
+  width: 100%;
+}
+
+input[type='file'].hidden
+{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    font-size: 50px;
+    cursor: pointer;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: Alpha(Opacity=0);
+    width: 100%;
+}
+
+.img{
+  max-width: 537.5px;
+  max-height: 358.32px;
+  min-width: 537.5px;
+  min-height: 358.32px;
+
+}
+
+#toolbox{
+margin-top:3px;
+}
