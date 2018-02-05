@@ -11,7 +11,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private homeService: HomeService) { }
   Posts: boolean = true;
-  Images: boolean = false;
   Notifications: boolean = false;
   showNav = true;
   ngOnInit() {
@@ -27,17 +26,10 @@ export class HomeComponent implements OnInit {
   changeDisplay(x: string) {
     if (x === "Posts") {
       this.Posts = true;
-      this.Images = false;
       this.Notifications = false;
-    }
-    else if (x === "Images") {
-      this.Posts = false;
-      this.Images = true;
-      this.Notifications = false;;
     }
     else if (x === "Notifications") {
       this.Posts = false;
-      this.Images = false;
       this.Notifications = true;
     }
   }

@@ -12,8 +12,6 @@ import { MdCardModule} from "@angular2-material/card";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
-import { ImagesComponent } from './images/images.component';
-import { ImageModal } from './images/angular2-image-popup/image-modal-popup';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import {CommonModule} from '@angular/common';
@@ -31,8 +29,6 @@ import { ContactinformationeditComponent } from './contactinformationedit/contac
     AboutComponent,
     ContactComponent,
     PostDetailComponent,
-    ImagesComponent,
-    ImageModal,
     LoginComponent,
     FooterComponent,
     EventsComponent,
