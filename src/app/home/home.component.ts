@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../home.service';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { PostModel } from '../post-model';
 
 @Component({
   selector: 'app-home',
@@ -13,13 +14,23 @@ export class HomeComponent implements OnInit {
   Posts: boolean = true;
   Notifications: boolean = false;
   showNav = true;
+  posts: PostModel[] = [];
+
+
   ngOnInit() {
     this.getUsers();
+    this.getPosts();
   }
 
   getUsers() {
     this.homeService.getUsers().subscribe(data => {
       console.log(data);
+    });
+  }
+
+  getPosts() {
+    this.homeService.getPosts().subscribe(data => {
+      this.posts = data;
     });
   }
 
