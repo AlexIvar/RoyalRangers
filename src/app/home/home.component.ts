@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
   changeDisplay(x: string) {
     if (x === "Posts") {
       this.Posts = true;
