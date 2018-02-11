@@ -6,10 +6,10 @@
   </div>
 
   <div class="row">
-    <div class="col col-md-8">
-      <div id="posts" *ngIf="Posts">
+    <div class="col col-md-8" *ngIf="Posts">
+      <div id="posts" >
         <div *ngFor="let post of posts">
-          <a [routerLink]="[ '/postdetail/', post.id]" routerLinkActive="active">
+          <a [routerLink]="[ '/postdetail/', post.pid]" routerLinkActive="active">
             <div class="card" id="cardStyle" data-aos="fade-in" data-aos-duration="1000">
               <img class="card-img-top" src="https://s4.postimg.org/gozhmenvx/image-alignment-300x200.jpg" alt="Card image cap" id="cardImage" />
               <div class="card-block">
@@ -22,26 +22,27 @@
             </div>
           </a>
         </div>
-        <button type="button" class="btn btn-secondary btn-lg btn-block" style="width:80%; display: inline-block; margin: 0 0 1em;" (click)="getData()" [disabled]="counter>=posts.length">Hlaða meira...</button>
+        <button type="button" class="btn btn-secondary btn-lg btn-block" style="width:80%; display: inline-block; margin: 0 0 1em;">Hlaða meira...</button>
       </div>
     </div>
 
 
-
-    <div id="posts" *ngIf="Notifications">
-
+  <div class="col col-md-8" *ngIf="Notifications">
+    <div id="announcements">
+      <div *ngFor="let announcement of announcements">
       <div class="card" id="cardStyle" data-aos="fade-in" data-aos-duration="1000">
         <div class="card-block">
-          <h4 class="card-title">Minnum á skráningu</h4>
-          <p class="card-text" id="cardText">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h4 class="card-title">{{ announcement.title }}</h4>
+          <p class="card-text" id="cardText">{{ announcement.content }}</p>
         </div>
         <div class="card-footer">
-          2017
+          {{ announcement.date }}
         </div>
       </div>
-
+    </div>
       <button type="button" class="btn btn-secondary btn-lg btn-block" style="width:80%; display: inline-block; margin: 0 0 1em;">Hlaða meira...</button>
     </div>
+  </div>
 
     <div class="col col-md-4" id="miniMenu">
       <div class="sidebarModule">

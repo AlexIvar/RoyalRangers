@@ -161,6 +161,7 @@ console.log("when : " + req.body.when);
         id: autoIndex,
         title: req.body.title,
         content: req.body.content,
+        date: new Date().format('dd-mm-yyyy')
       };
 
       console.log(newAnnouncement);

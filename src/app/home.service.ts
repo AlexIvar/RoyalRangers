@@ -39,6 +39,10 @@ export class HomeService {
       });
   }
 
+  getAnnouncements(): Observable<AnnouncementModel[]> {
+    return this.http.get(this.PREFIX + 'announcements').map((res: Response) => <AnnouncementModel[]>res.json());
+  }
+
   addAnnouncement(announcement:AnnouncementModel): void {
      var headers = new Headers();
      headers.append("Accept", 'application/json');

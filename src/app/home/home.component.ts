@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../home.service';
 import { CommonModule } from '@angular/common';
 import { PostModel } from '../post-model';
+import { AnnouncementModel } from '../announcement-model';
 import { TranslateService } from 'ng2-translate';
 
 @Component({
@@ -16,11 +17,12 @@ export class HomeComponent implements OnInit {
   Notifications: boolean = false;
   showNav = true;
   posts: PostModel[] = [];
-
+  announcements: AnnouncementModel[] = [];
 
   ngOnInit() {
     this.getUsers();
     this.getPosts();
+    this.getAnnouncements();
   }
 
   getUsers() {
@@ -32,6 +34,12 @@ export class HomeComponent implements OnInit {
   getPosts() {
     this.homeService.getPosts().subscribe(data => {
       this.posts = data;
+    });
+  }
+
+  getAnnouncements() {
+    this.homeService.getAnnouncements().subscribe(data => {
+      this.announcements = data;
     });
   }
 
