@@ -14,15 +14,31 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label for="PostDate" class="col-form-label">Hvenær á viðburðurinn sér stað?</label>
-                  <input type="text" class="form-control" id="PostDate" placeholder="" [(ngModel)]="post.date" name="date">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)] = "post.when" name="when">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                  </mat-form-field>
+                <!--  <label for="PostDate" class="col-form-label">Hvenær á viðburðurinn sér stað?</label>
+                  <input type="text" class="form-control" id="PostDate" placeholder="" [(ngModel)]="post.date" name="date">-->
                 </div>
+
                 <div class="form-group col-md-12">
                   <label for="PostContent" class="col-form-label">Segðu frá viðburðinum</label>
                   <textarea class="form-control animated" id="PostContent" placeholder="" [(ngModel)] = "post.content" name="content"></textarea>
                 </div>
                 <div class="form-group col-md-12">
                   <label for="inputPassword4" class="col-form-label">Aðrar upplýsingar</label>
-                  <textarea class="form-control animated" placeholder=""></textarea>
+                  <textarea class="form-control animated" placeholder="" [(ngModel)] = "post.otherInformation" name="otherInformation"></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                 <label for="PostLocation" class="col-form-label">Staðsetning</label>
+                   <div class="input-group">
+                  <input type="text" class="form-control" id="PostLocation" placeholder="" [(ngModel)]="post.location" name="location">
+                  <span class="input-group-btn">
+                      <a class="btn btn-primary" href="http://www.google.is/maps" type="button" target="_blank">Sækja link</a>
+                  </span>
+                   </div>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Add</button>

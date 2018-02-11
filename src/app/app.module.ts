@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { HomeService } from './home.service';
 import { HttpModule } from '@angular/http';
-import { MdToolbarModule, MdIconModule } from '@angular/material';
+import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MdCardModule } from "@angular2-material/card";
 import { NavbarComponent } from './navbar/navbar.component';
@@ -24,6 +24,8 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate';
 import { TranslateLoader, TranslateStaticLoader } from "ng2-translate/src/translate.service";
 import { Http } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -55,9 +57,12 @@ export function createTranslateLoader(http: Http) {
     }),
     HttpModule,
     MdCardModule,
-    MdToolbarModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatNativeDateModule,
     FlexLayoutModule,
-    MdIconModule,
     MdCardModule,
     CommonModule,
     RouterModule.forRoot([{
