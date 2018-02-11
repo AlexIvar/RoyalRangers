@@ -20,14 +20,32 @@ export class HomeService {
     return this.http.get(this.PREFIX + 'posts').map((res: Response) => <PostModel[]>res.json());
   }
 
+  getPostByID(id: string): Observable<PostModel> {
+    return this.http.get(this.PREFIX + 'posts/' + id).map((res: Response) => <PostModel>res.json());
+  }
+
   //Adds a new post/event to the database
-  addPost(post:PostModel): void {
+  addPost(post: PostModel): void {
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.post(this.PREFIX + "posts", post, options)
+      .subscribe(data => {
+        console.log(data['_body']);
+      }, error => {
+        console.log(error);// Error getting the data
+      });
+  }
+
+  addAnnouncement(announcement:AnnouncementModel): void {
      var headers = new Headers();
      headers.append("Accept", 'application/json');
      headers.append('Content-Type', 'application/json' );
      let options = new RequestOptions({ headers: headers });
 
-      this.http.post(this.PREFIX + "posts", post, options)
+      this.http.post(this.PREFIX + "announcements", announcement, options)
        .subscribe(data => {
          console.log(data['_body']);
         }, error => {
@@ -35,28 +53,14 @@ export class HomeService {
        });
    }
 
-   addAnnouncement(announcement:AnnouncementModel): void {
-      var headers = new Headers();
-      headers.append("Accept", 'application/json');
-      headers.append('Content-Type', 'application/json' );
-      let options = new RequestOptions({ headers: headers });
+  private extractData(res: Response) {
+    let body = res.json();
+    return body || {};
+  }
 
-       this.http.post(this.PREFIX + "announcements", announcement, options)
-        .subscribe(data => {
-          console.log(data['_body']);
-         }, error => {
-          console.log(error);// Error getting the data
-        });
-    }
-
- private extractData(res: Response) {
-     let body = res.json();
-     return body || {};
-}
-
- private handleErrorObservable (error: Response | any) {
-   console.error(error.message || error);
-   return Observable.throw(error.message || error);
+  private handleErrorObservable(error: Response | any) {
+    console.error(error.message || error);
+    return Observable.throw(error.message || error);
   }
 
 }

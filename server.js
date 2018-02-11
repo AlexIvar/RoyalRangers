@@ -74,12 +74,12 @@ app.post("/api/posts", function(req, res) {
     handleError(res, err.message, "Title and content of post are required.");
   }
 
-console.log("when : " + req.body.when);
+  console.log("when : " + req.body.when);
 
-  autoIncrement.getNextSequence(db, POSTS_COLLECTION, function(err, autoIndex){
-    if(err){
+  autoIncrement.getNextSequence(db, POSTS_COLLECTION, function(err, autoIndex) {
+    if (err) {
       handleError(res, err.message, "Failed to create id.");
-    } else{
+    } else {
       var newPost = {
         id: autoIndex,
         title: req.body.title,
@@ -102,7 +102,6 @@ console.log("when : " + req.body.when);
       });
     }
   });
-
 });
 
 
@@ -117,11 +116,27 @@ app.get("/api/posts", function(req, res) {
   });
 });
 
+
 //gets all created announcements
 app.get("/api/announcements", function(req, res) {
   db.collection(ANNOUNCEMENT_COLLECTION).find({}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get announcements.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
+
+
+//get post by id
+app.get("/api/posts/:id", function(req, res) {
+  db.collection(POSTS_COLLECTION).findOne({
+    id: parseInt(req.params.id)
+  }, function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get post with that id.");
     } else {
       res.status(200).json(docs);
     }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../home.service';
 import { CommonModule } from '@angular/common';
 import { PostModel } from '../post-model';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { PostModel } from '../post-model';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private translate: TranslateService) { }
   Posts: boolean = true;
   Notifications: boolean = false;
   showNav = true;

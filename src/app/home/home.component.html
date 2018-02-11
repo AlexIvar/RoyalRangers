@@ -9,7 +9,7 @@
     <div class="col col-md-8">
       <div id="posts" *ngIf="Posts">
         <div *ngFor="let post of posts">
-          <a [routerLink]="[ '/postdetail/', post.pid]" routerLinkActive="active">
+          <a [routerLink]="[ '/postdetail/', post.id]" routerLinkActive="active">
             <div class="card" id="cardStyle" data-aos="fade-in" data-aos-duration="1000">
               <img class="card-img-top" src="https://s4.postimg.org/gozhmenvx/image-alignment-300x200.jpg" alt="Card image cap" id="cardImage" />
               <div class="card-block">

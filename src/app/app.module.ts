@@ -8,20 +8,28 @@ import { HomeService } from './home.service';
 import { HttpModule } from '@angular/http';
 import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MdCardModule} from "@angular2-material/card";
+import { MdCardModule } from "@angular2-material/card";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { EventsComponent } from './events/events.component';
 import { InnerWebComponent } from './inner-web/inner-web.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { AbouteditComponent } from './aboutedit/aboutedit.component';
 import { ContactinformationeditComponent } from './contactinformationedit/contactinformationedit.component';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from 'ng2-translate';
+import { TranslateLoader, TranslateStaticLoader } from "ng2-translate/src/translate.service";
+import { Http } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -42,6 +50,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     FormsModule,
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http]
+    }),
     HttpModule,
     MdCardModule,
     MatDatepickerModule,
@@ -58,51 +71,51 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       pathMatch: 'full'
 
     },
-      {
-        path: 'about',
-        component: AboutComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'contact',
-        component: ContactComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'postdetail/:id',
-        component: PostDetailComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'events',
-        component: EventsComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'innerweb',
-        component: InnerWebComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'announcements',
-        component: AnnouncementsComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'aboutedit',
-        component: AbouteditComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'contactinformationedit',
-        component: ContactinformationeditComponent,
-        pathMatch: 'full'
-      }
+    {
+      path: 'about',
+      component: AboutComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'contact',
+      component: ContactComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'postdetail/:id',
+      component: PostDetailComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'login',
+      component: LoginComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'events',
+      component: EventsComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'innerweb',
+      component: InnerWebComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'announcements',
+      component: AnnouncementsComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'aboutedit',
+      component: AbouteditComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'contactinformationedit',
+      component: ContactinformationeditComponent,
+      pathMatch: 'full'
+    }
 
     ])
   ],
