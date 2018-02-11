@@ -85,7 +85,9 @@ console.log("when : " + req.body.when);
         content: req.body.content,
         image: req.body.image,
         date: new Date().format('dd-mm-yyyy'),
-        when: new Date().format('dd-mm-yyyy')
+        when: new Date(req.body.when).format('dd-mm-yyyy'),
+        location: req.body.location,
+        otherInformation: req.body.otherInformation
       };
 
       console.log(newPost);

@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { HomeService } from './home.service';
 import { HttpModule } from '@angular/http';
-import {MdToolbarModule, MdIconModule} from '@angular/material';
+import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MdCardModule} from "@angular2-material/card";
 import { NavbarComponent } from './navbar/navbar.component';
@@ -21,6 +21,7 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
 import { AbouteditComponent } from './aboutedit/aboutedit.component';
 import { ContactinformationeditComponent } from './contactinformationedit/contactinformationedit.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -43,9 +44,12 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     HttpModule,
     MdCardModule,
-    MdToolbarModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatNativeDateModule,
     FlexLayoutModule,
-    MdIconModule,
     MdCardModule,
     CommonModule,
     RouterModule.forRoot([{
