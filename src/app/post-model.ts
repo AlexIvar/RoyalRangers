@@ -5,6 +5,7 @@ export class PostModel {
   content: string;      // content of post
   image: string;        // image for post
   date: string;         // date of post posted
+  when: string;           // date of when event starts
 
   constructor() {
     this.id = "";
@@ -12,5 +13,6 @@ export class PostModel {
     this.content = "";
     this.image = "";
     this.date = "";
+    this.when = "";
   }
 }

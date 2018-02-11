@@ -19,6 +19,7 @@ export class HomeService {
     return this.http.get(this.PREFIX + 'posts').map((res: Response) => <PostModel[]>res.json());
   }
 
+  //Adds a new post/event to the database
   addPost(post:PostModel): void {
      var headers = new Headers();
      headers.append("Accept", 'application/json');

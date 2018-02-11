@@ -27,9 +27,9 @@ export class EventsComponent implements OnInit {
 
   }
 
+  //Adds a new post or event to the db
   addEvent() {
      this.homeService.addPost(this.post);
-     console.log("added this post : " + this.post);
    }
 
   reset(){

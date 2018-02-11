@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var dateFormat = require('x-date');
 var cors = require('cors');
+var autoIncrement = require("mongodb-autoincrement");
 var ObjectID = mongodb.ObjectID;
 
 const url = require('url');
@@ -66,27 +67,39 @@ app.get("/api/users", function(req, res) {
 //creates a new post
 app.post("/api/posts", function(req, res) {
   //var newPost = req.body;
+  var id;
 
   if (!req.body.title || !req.body.content) {
     handleError(res, err.message, "Title and content of post are required.");
   }
 
-  var newPost = {
-    title: req.body.title,
-    content: req.body.content,
-    image: req.body.image,
-    date: new Date().format('dd-mm-yyyy')
-  };
+console.log("when : " + req.body.when);
 
-  console.log(newPost);
+  autoIncrement.getNextSequence(db, POSTS_COLLECTION, function(err, autoIndex){
+    if(err){
+      handleError(res, err.message, "Failed to create id.");
+    } else{
+      var newPost = {
+        id: autoIndex,
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        date: new Date().format('dd-mm-yyyy'),
+        when: new Date().format('dd-mm-yyyy')
+      };
 
-  db.collection(POSTS_COLLECTION).insertOne(newPost, function(err, doc) {
-    if (err) {
-      handleError(res, err.message, "Failed to create post.");
-    } else {
-      res.status(201).json(doc.ops[0]);
+      console.log(newPost);
+
+      db.collection(POSTS_COLLECTION).insertOne(newPost, function(err, doc) {
+        if (err) {
+          handleError(res, err.message, "Failed to create post.");
+        } else {
+          res.status(201).json(doc.ops[0]);
+        }
+      });
     }
   });
+
 });
 
 
