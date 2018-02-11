@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnouncementModel } from '../announcement-model';
 import { HomeService } from '../home.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-announcements',
@@ -11,13 +12,16 @@ export class AnnouncementsComponent implements OnInit {
 
 
   announcement = new AnnouncementModel();
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private toastr: ToastrService) { }
 
   ngOnInit() {
+
   }
 
   addAnnouncement(){
     console.log(this.announcement);
      this.homeService.addAnnouncement(this.announcement);
+     this.toastr.success('Hello world!', 'Toastr fun!');
   }
+
 }

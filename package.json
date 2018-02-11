@@ -37,6 +37,7 @@
     "mongodb-autoincrement": "^1.0.1",
     "mongojs": "^2.4.0",
     "ng2-translate": "^5.0.0",
+    "ngx-toastr": "^8.2.1",
     "rxjs": "^5.1.0",
     "url": "^0.11.0",
     "x-date": "^1.0.2",

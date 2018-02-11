@@ -25,7 +25,7 @@ import { TranslateModule } from 'ng2-translate';
 import { TranslateLoader, TranslateStaticLoader } from "ng2-translate/src/translate.service";
 import { Http } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ToastrModule } from 'ngx-toastr';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -65,6 +65,11 @@ export function createTranslateLoader(http: Http) {
     FlexLayoutModule,
     MdCardModule,
     CommonModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-left',
+      preventDuplicates: true,
+    }),
     RouterModule.forRoot([{
       path: '',
       component: HomeComponent,
