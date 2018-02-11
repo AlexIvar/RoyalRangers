@@ -10,6 +10,7 @@ const url = require('url');
 
 var CONTACTS_COLLECTION = "Users";
 var POSTS_COLLECTION = "Posts";
+var ANNOUNCEMENT_COLLECTION = "Announcements";
 
 var MONGODB_URI = 'mongodb://admin:pass@ds155132.mlab.com:55132/royalrangersdb';
 
@@ -114,4 +115,49 @@ app.get("/api/posts", function(req, res) {
       res.status(200).json(docs);
     }
   });
+});
+
+//gets all created announcements
+app.get("/api/announcements", function(req, res) {
+  db.collection(ANNOUNCEMENT_COLLECTION).find({}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get announcements.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
+app.post("/api/announcements", function(req, res) {
+  //var newPost = req.body;
+  var id;
+
+  if (!req.body.title || !req.body.content) {
+    handleError(res, err.message, "Title and content of post are required.");
+  }
+
+console.log("when : " + req.body.when);
+
+  autoIncrement.getNextSequence(db, ANNOUNCEMENT_COLLECTION, function(err, autoIndex){
+    if(err){
+      handleError(res, err.message, "Failed to create id.");
+    } else{
+      var newAnnouncement = {
+        id: autoIndex,
+        title: req.body.title,
+        content: req.body.content,
+      };
+
+      console.log(newAnnouncement);
+
+      db.collection(ANNOUNCEMENT_COLLECTION).insertOne(newAnnouncement, function(err, doc) {
+        if (err) {
+          handleError(res, err.message, "Failed to create announcement.");
+        } else {
+          res.status(201).json(doc.ops[0]);
+        }
+      });
+    }
+  });
+
 });

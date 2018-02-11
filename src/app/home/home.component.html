@@ -22,7 +22,7 @@
             </div>
           </a>
         </div>
-        <button type="button" class="btn btn-secondary btn-lg btn-block" style="width:80%; display: inline-block; margin: 0 0 1em;">Hlaða meira...</button>
+        <button type="button" class="btn btn-secondary btn-lg btn-block" style="width:80%; display: inline-block; margin: 0 0 1em;" (click)="getData()" [disabled]="counter>=posts.length">Hlaða meira...</button>
       </div>
     </div>
 

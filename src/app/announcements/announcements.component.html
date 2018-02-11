@@ -6,17 +6,18 @@
   <div class="row">
       <div class="col-sm-5 col-md-6">
         <div class="card" id="cardStyle">
-          <form>
+            <form (ngSubmit)="addAnnouncement()">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4" class="col-form-label">Titil á tilkynningu</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="" [(ngModel)]="announcement.title" name="title">
                 </div>
                 <div class="form-group col-md-12">
                   <label for="inputPassword4" class="col-form-label">Tilkynning</label>
-                  <textarea class="form-control animated" placeholder=""></textarea>
+                  <textarea class="form-control animated" placeholder="" [(ngModel)]="announcement.content" name="content" ></textarea>
                 </div>
               </div>
+              <button type="submit" class="btn btn-primary btn-block">Add</button>
             </form>
         </div>
       </div>

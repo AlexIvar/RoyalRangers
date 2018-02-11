@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnnouncementModel } from '../announcement-model';
+import { HomeService } from '../home.service';
 
 @Component({
   selector: 'app-announcements',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnnouncementsComponent implements OnInit {
 
-  constructor() { }
+
+  announcement = new AnnouncementModel();
+  constructor(private homeService: HomeService) { }
 
   ngOnInit() {
   }
 
+  addAnnouncement(){
+    console.log(this.announcement);
+     this.homeService.addAnnouncement(this.announcement);
+  }
 }
