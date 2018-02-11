@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TranslateModule } from 'ng2-translate';
 import { PostDetailComponent } from './post-detail.component';
 
 describe('PostDetailComponent', () => {
@@ -8,9 +8,10 @@ describe('PostDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostDetailComponent ]
+      imports: [TranslateModule.forRoot()],
+      declarations: [PostDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,0 +1,27 @@
+{
+    "DATE_OBJECT": {
+        "DAY_OF_WEEK": {
+            "Sunday": "Sunnudagur",
+            "Monday": "Mánudagur",
+            "Tuesday": "Þriðjudagur",
+            "Wednesday": "Miðvikudagur",
+            "Thursday": "Fimmtudagur",
+            "Friday": "Föstudagur",
+            "Saturday": "Laugardagur"
+        },
+        "MONTH": {
+            "January": "Janúar",
+            "February": "Febrúar",
+            "March": "Mars",
+            "April": "Apríl",
+            "May": "Maí",
+            "June": "Júní",
+            "July": "July",
+            "August": "Ágúst",
+            "September": "September",
+            "October:": "Október",
+            "November": "Nóvember",
+            "December": "Desember"
+        }
+    }
+}
