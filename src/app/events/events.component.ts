@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { PostModel } from '../post-model';
+import { HomeService } from '../home.service';
 declare var Cropper: any;
 
 @Component({
@@ -15,7 +17,8 @@ export class EventsComponent implements OnInit {
   @ViewChild('photo') photo : ElementRef;
   input : boolean = true;
   step : string;
-  constructor(private element: ElementRef) { }
+  post = new PostModel();
+  constructor(private element: ElementRef, private homeService: HomeService) { }
 
   ngOnInit() {
   }
@@ -23,6 +26,11 @@ export class EventsComponent implements OnInit {
   ngAfterViewInit() {
 
   }
+
+  addEvent() {
+     this.homeService.addPost(this.post);
+     console.log("added this post : " + this.post);
+   }
 
   reset(){
     this.step = "";
@@ -60,5 +68,8 @@ export class EventsComponent implements OnInit {
   }
 }
 
+addPost(){
+
+}
 
 }

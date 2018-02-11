@@ -20,6 +20,7 @@ import { InnerWebComponent } from './inner-web/inner-web.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { AbouteditComponent } from './aboutedit/aboutedit.component';
 import { ContactinformationeditComponent } from './contactinformationedit/contactinformationedit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ContactinformationeditComponent } from './contactinformationedit/contac
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpModule,
     MdCardModule,
     MdToolbarModule,

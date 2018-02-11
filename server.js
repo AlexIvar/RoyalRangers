@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var dateFormat = require('x-date');
+var cors = require('cors');
 var ObjectID = mongodb.ObjectID;
 
 const url = require('url');
@@ -13,7 +14,7 @@ var MONGODB_URI = 'mongodb://admin:pass@ds155132.mlab.com:55132/royalrangersdb';
 
 var app = express();
 app.use(bodyParser.json());
-
+app.use(cors());
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
 
