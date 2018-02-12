@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { PostModel } from '../post-model';
 import { HomeService } from '../home.service';
+import { ToastrService } from 'ngx-toastr';
 declare var Cropper: any;
 
 @Component({
@@ -18,7 +19,7 @@ export class EventsComponent implements OnInit {
   input : boolean = true;
   step : string;
   post = new PostModel();
-  constructor(private element: ElementRef, private homeService: HomeService) { }
+  constructor(private element: ElementRef, private homeService: HomeService, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -29,7 +30,17 @@ export class EventsComponent implements OnInit {
 
   //Adds a new post or event to the db
   addEvent() {
-     this.homeService.addPost(this.post);
+     this.homeService.addPost(this.post).subscribe(data => {
+        this.toastr.success('Tókst að bæta við viðburði!', '');
+        this.post.title = "";
+        this.post.when = "";
+        this.post.content = "";
+        this.post.otherInformation = "";
+        this.post.location = "";
+       }, error => {
+        this.toastr.error('Ekki tókst að bæta við viðburði!', '');
+      });
+;
    }
 
   reset(){

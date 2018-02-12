@@ -25,36 +25,28 @@ export class HomeService {
   }
 
   //Adds a new post/event to the database
-  addPost(post: PostModel): void {
+  addPost(post: PostModel): Observable<Object> {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
 
-    this.http.post(this.PREFIX + "posts", post, options)
-      .subscribe(data => {
-        console.log(data['_body']);
-      }, error => {
-        console.log(error);// Error getting the data
-      });
+    return this.http.post(this.PREFIX + "posts", post, options)
+      .map((res: Response) => res.json());
   }
 
   getAnnouncements(): Observable<AnnouncementModel[]> {
     return this.http.get(this.PREFIX + 'announcements').map((res: Response) => <AnnouncementModel[]>res.json());
   }
 
-  addAnnouncement(announcement:AnnouncementModel): void {
+  addAnnouncement(announcement:AnnouncementModel): Observable<Object> {
      var headers = new Headers();
      headers.append("Accept", 'application/json');
      headers.append('Content-Type', 'application/json' );
      let options = new RequestOptions({ headers: headers });
 
-      this.http.post(this.PREFIX + "announcements", announcement, options)
-       .subscribe(data => {
-         console.log(data['_body']);
-        }, error => {
-         console.log(error);// Error getting the data
-       });
+      return this.http.post(this.PREFIX + "announcements", announcement, options)
+       .map((res: Response) => res.json());
    }
 
   private extractData(res: Response) {

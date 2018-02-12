@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   getPosts() {
     this.homeService.getPosts().subscribe(data => {
-      this.posts = data;
+      this.posts = data.reverse();
     });
   }
 

@@ -20,8 +20,14 @@ export class AnnouncementsComponent implements OnInit {
 
   addAnnouncement(){
     console.log(this.announcement);
-     this.homeService.addAnnouncement(this.announcement);
-     this.toastr.success('Hello world!', 'Toastr fun!');
+     this.homeService.addAnnouncement(this.announcement).subscribe(data => {
+        this.toastr.success('Tókst að bæta við tilkynningu!', '');
+        this.announcement.title = "";
+        this.announcement.content = "";
+       }, error => {
+        this.toastr.error('Ekki tókst að bæta við tilkynningu!', '');
+      });
+
   }
 
 }

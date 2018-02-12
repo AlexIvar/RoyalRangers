@@ -67,7 +67,7 @@ export function createTranslateLoader(http: Http) {
     CommonModule,
     ToastrModule.forRoot({
       timeOut: 10000,
-      positionClass: 'toast-top-left',
+      positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
     RouterModule.forRoot([{
